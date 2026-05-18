@@ -11,6 +11,6 @@ public class DemoApplication extends ServletInitializer{
 		SpringApplication.run(DemoApplication.class, args);
 		
 		System.out.println("Hi");
-	}
+	}	
 
 }
