@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,8 +26,9 @@ public String returnSomethingMan(@PathVariable String name) {
 	return "Hey Bro"+ " "+name;
 }
 @PostMapping("/saveData")
-public Customer test(@RequestBody CustomerDTO cust) {
-	return sr.save(cust);
+public ResponseEntity<Customer> test(@RequestBody CustomerDTO cust) {
+	 Customer save = sr.save(cust);
+	return ResponseEntity.status(HttpStatus.CREATED).body(save);
 
 }
 @GetMapping("/showAllData")
@@ -37,8 +40,9 @@ public Optional<Customer> findBydId(@PathVariable Long id){
 	return sr.findById(id);
 }
 @GetMapping("findByName/{name}")
-public Customer findByName(@PathVariable String name) {
-	return sr.findByName(name);
+public ResponseEntity<Customer> findByName(@PathVariable String name) {
+	 Customer byName = sr.findByName(name);
+	return ResponseEntity.status(HttpStatus.CREATED).body(byName);
 }
 @DeleteMapping("/{id}")
 public String delete(@PathVariable Long id) {
