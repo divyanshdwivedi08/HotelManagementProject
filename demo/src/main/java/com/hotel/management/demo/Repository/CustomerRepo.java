@@ -9,4 +9,5 @@ public interface CustomerRepo extends JpaRepository<Customer, Long> {
 Optional<Customer> findByName(String name);
 List<Customer> findByAge(Long age);
 List<Customer> findByState(String state);
+
 }
